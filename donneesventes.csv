@@ -1,5 +1,5 @@
 Produit;Categorie;Stock_de_depart;Demande_d1;Croissance_par_jour;Mois_de_saisonnalite;Saisonnalite;Variation_journaliere;Delai_livraison;Cout_de_lancement;Taux_de_possession;Prix_d_achat;Pourcentage_perte
-C001;C;4081;341;1;7;10,19;9;5;276;0,2;3;0,5
+C001;C;4081;341;1;7;1,00;9;5;276;0,2;3;0,5
 C002;C;6705;67;0;12;0,39;14;23;133;0,2;20;0,5
 C003;C;6999;670;-2;0;0;52;4;474;0,2;3;0,5
 C004;C;8959;990;-3;3;0,29;50;9;198;0,2;2;0,5
