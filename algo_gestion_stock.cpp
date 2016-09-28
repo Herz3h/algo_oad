@@ -20,15 +20,24 @@ void readCsv()
     string produit, categorie, tauxSaisonnalite, tauxPossession, pourcentagePerte;
     int stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, prixAchat;
 
+    int i = 1;
     // Récuperation des données par ligne (1produit/ligne)
     /* while(in.read_row(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, tauxSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, tauxPossession, prixAchat, pourcentagePerte)){ */
-    /*     liste_produits.push_back(new Produit(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, tauxSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, tauxPossession, prixAchat, pourcentagePerte)); */
+    /*     cout << i << endl; */
+    /*     new Produit(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, prixAchat, tauxSaisonnalite, tauxPossession, pourcentagePerte); */
+    /*     i++; */
     /* } */
+
 
     in.read_row(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, tauxSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, tauxPossession, prixAchat, pourcentagePerte);
 
-
     new Produit(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, prixAchat, tauxSaisonnalite, tauxPossession, pourcentagePerte);
 
+    /* in.read_row(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, tauxSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, tauxPossession, prixAchat, pourcentagePerte); */
+
+    /* new Produit(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, prixAchat, tauxSaisonnalite, tauxPossession, pourcentagePerte); */
+    /* in.read_row(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, tauxSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, tauxPossession, prixAchat, pourcentagePerte); */
+
+    /* new Produit(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, prixAchat, tauxSaisonnalite, tauxPossession, pourcentagePerte); */
 }
 
