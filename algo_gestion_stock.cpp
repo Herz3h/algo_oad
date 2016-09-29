@@ -10,9 +10,6 @@ int main()
 
 void readCsv()
 {
-    // Initialisation
-    io::CSVReader<13, io::trim_chars<' '>, io::no_quote_escape<';'> > in("donneesventes.csv");
-    in.read_header(io::ignore_no_column, "Produit", "Categorie", "Stock_de_depart", "Demande_d1", "Croissance_par_jour", "Mois_de_saisonnalite", "Saisonnalite", "Variation_journaliere", "Delai_livraison", "Cout_de_lancement", "Taux_de_possession", "Prix_d_achat", "Pourcentage_perte");
 
     vector<Produit*> liste_produits;
 
@@ -24,6 +21,10 @@ void readCsv()
 
     for(int j = 1;j < 10;j++)
     {
+        // Initialisation
+        io::CSVReader<13, io::trim_chars<' '>, io::no_quote_escape<';'> > in("donneesventes.csv");
+        in.read_header(io::ignore_no_column, "Produit", "Categorie", "Stock_de_depart", "Demande_d1", "Croissance_par_jour", "Mois_de_saisonnalite", "Saisonnalite", "Variation_journaliere", "Delai_livraison", "Cout_de_lancement", "Taux_de_possession", "Prix_d_achat", "Pourcentage_perte");
+
         // On efface le contenu du fichier de sortie précedent
         ofstream ofs;
         ofs.open("output" + to_string(j) + ".csv", ios::out | ios::trunc);
