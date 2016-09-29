@@ -26,7 +26,7 @@ using namespace io;
 #define NB_PAS 4
 #define NB_PASSAGE 100
 #define NB_TOP_CANIDATS 5
-#define TAILLE_LISTE_TABOU 30
+#define TAILLE_LISTE_TABOU 1000
 #define NB_ESSAI_SANS_AMELIORATION_MAX 100
 #define BORNE_QUANTITE_VOISINS 0.4
 #define BORNE_STOCK_ALERT_VOISINS 0.4
@@ -34,8 +34,8 @@ using namespace io;
 #define TOLERANCE_RUPTURE 2.36
 #define FREQUENCE_EXPLORATION 10
 #define FREQUENCE_EXPLOITATION 5
-#define RATIO_EXPLORATION 0.2
-#define RATIO_EXPLOITATION 0.01
+#define RATIO_EXPLORATION 0.002
+#define RATIO_EXPLOITATION 0.0
 
 struct coupleDemandeEffectif {
 	int demande;

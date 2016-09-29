@@ -134,7 +134,7 @@ vector<struct candidat> Produit::genererVoisins(struct candidat candidat_depart)
 
     vector<struct candidat> voisins;
     int i=0, quatite=0, st=0;
-    int minQ,maxQ,minSA,maxSA;
+    long long unsigned int minQ,maxQ,minSA,maxSA;
 
     minQ= candidat_depart.quantite  - candidat_depart.quantite * BORNE_QUANTITE_VOISINS;
     maxQ= candidat_depart.quantite  + candidat_depart.quantite * BORNE_QUANTITE_VOISINS;
@@ -161,6 +161,8 @@ vector<struct candidat> Produit::genererVoisins(struct candidat candidat_depart)
             minSA *= (1.0 - RATIO_EXPLOITATION);
             maxSA *= (1.0 + RATIO_EXPLOITATION);
         }
+
+        cout << minQ << " " << maxQ << " " << minSA << " " << maxSA << endl;
 
         voisin.quantite=  randInt(minQ,maxQ);
 
