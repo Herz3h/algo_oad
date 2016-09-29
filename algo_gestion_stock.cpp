@@ -22,21 +22,23 @@ void readCsv()
 
     int i = 1;
 
-    // On efface le contenu du fichier de sortie précedent
-    ofstream ofs;
-    ofs.open("output.csv", ios::out | ios::trunc);
-    ofs << "Produit;Pdc_stock_alerte;Pdc_quantite" << endl;
-    ofs.close();
+    for(int j = 1;j < 10;j++)
+    {
+        // On efface le contenu du fichier de sortie précedent
+        ofstream ofs;
+        ofs.open("output" + to_string(j) + ".csv", ios::out | ios::trunc);
+        ofs << "Produit;Pdc_stock_alerte;Pdc_quantite" << endl;
+        ofs.close();
 
-    int totalSimulation = 0;
-    // Récuperation des données par ligne (1produit/ligne)
-    while(in.read_row(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, tauxSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, tauxPossession, prixAchat, pourcentagePerte)){
-        Produit p(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, prixAchat, tauxSaisonnalite, tauxPossession, pourcentagePerte);
-        cout << i << endl;
-        i++;
-        totalSimulation += p.getMeilleurCandidatGlobal().coutTotal;
+        int totalSimulation = 0;
+        // Récuperation des données par ligne (1produit/ligne)
+        while(in.read_row(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, tauxSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, tauxPossession, prixAchat, pourcentagePerte)){
+            Produit p(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, prixAchat, tauxSaisonnalite, tauxPossession, pourcentagePerte, "output" + to_string(j) + ".csv");
+            i++;
+            totalSimulation += p.getMeilleurCandidatGlobal().coutTotal;
+        }
+        cout << totalSimulation << endl;
     }
-    cout << totalSimulation << endl;
 
 
     /* in.read_row(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, tauxSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, tauxPossession, prixAchat, pourcentagePerte); */

@@ -2,7 +2,7 @@
 
 struct mois Produit::joursOuvresParMois[12] = {{1, 23}, {24, 20}, {44, 22}, {66, 21}, {87, 23}, {110, 21}, {131, 22}, {153, 23}, {176, 20}, {196, 23}, {219, 22}, {241, 21}};
 
-Produit::Produit(string _p, string _c, int _sD, int _dJ, int _cJ, int _mS, int _vJ, int _dL, int _cL, int _pA, string _tS, string _tP, string _pP) : 
+Produit::Produit(string _p, string _c, int _sD, int _dJ, int _cJ, int _mS, int _vJ, int _dL, int _cL, int _pA, string _tS, string _tP, string _pP, string _nomFichier) : 
     produit(_p), categorie(_c), stockDepart(_sD), demandeJournaliere(_dJ),
     croissanceJournaliere(_cJ), moisSaisonnalite(_mS), variationJournaliere(_vJ), delaiLivraison(_dL), coutLancement(_cL),
     prixAchat(_pA), demandeJournaliereInitiale(_dJ),
@@ -57,10 +57,10 @@ Produit::Produit(string _p, string _c, int _sD, int _dJ, int _cJ, int _mS, int _
         retenirMeilleurVoisin(voisins);
     }
 
-    /* ofstream file; */
-    /* file.open("output.csv", ios::out | ios::app); */
-    /* file << produit << ";" << meilleurCandidatGlobal.quantite << ";" << meilleurCandidatGlobal.stockAlerte  << endl; */
-    /* file.close(); */
+    ofstream file;
+    file.open(_nomFichier, ios::out | ios::app);
+    file << produit << ";" << meilleurCandidatGlobal.quantite << ";" << meilleurCandidatGlobal.stockAlerte  << endl;
+    file.close();
 
 }
 
@@ -240,7 +240,7 @@ void Produit::compareResultatGlobal(struct candidat &voisin)
     }
     else
         nbEssaiSansAmelioration++;
-    cout << produit <<  " " <<  nbEssaiSansAmelioration << endl;
+    /* cout << produit <<  " " <<  nbEssaiSansAmelioration << endl; */
 }
 
 struct candidat Produit::getMeilleurCandidatGlobal()

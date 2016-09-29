@@ -101,7 +101,7 @@ class Produit
     int stockAlerte;
 
     public:
-    Produit(string _p, string _c, int _sD, int _dJ, int _cJ, int _mS, int _vJ, int _dL, int _cL, int _pA, string _tS, string _tP, string _pP);
+    Produit(string _p, string _c, int _sD, int _dJ, int _cJ, int _mS, int _vJ, int _dL, int _cL, int _pA, string _tS, string _tP, string _pP, string _nomFichier);
     void  incJour();
     bool  isInSaison();
     void  computeData();
