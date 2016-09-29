@@ -25,6 +25,16 @@ using namespace io;
 #define NB_PAS 4
 #define NB_PASSAGE 100
 #define NB_TOP_CANIDATS 5
+#define TAILLE_LISTE_TABOU 30
+#define NB_ESSAI_SANS_AMELIORATION_MAX 100
+#define BORNE_QUANTITE_VOISINS 0.4
+#define BORNE_STOCK_ALERT_VOISINS 0.4
+#define NB_VOISINS 100
+
+struct coupleDemandeEffectif {
+	int demande;
+	int nbEffectif;
+};
 
 struct candidat {
     int quantite;
@@ -71,13 +81,18 @@ class Produit
     int bestStockAlertePassage, bestTotalAnneePassage;
     int pas[NB_PAS];
     vector<struct stockAlerte_coutTotal > top_stockAlert_coutTotal;
+    vector<struct candidat > listeTabou;
+    int indexListeTabou;
+    struct candidat meilleurCandidatGlobal;
+    int nbEssaiSansAmelioration;
+    int stockAlerteTheorique;
 
     // Constantes
     int premierJourCommande;
 
     // Parametres
-    float quantite;
-    float stockAlerte;
+    int quantite;
+    int stockAlerte;
 
     public:
     Produit(string _p, string _c, int _sD, int _dJ, int _cJ, int _mS, int _vJ, int _dL, int _cL, int _pA, string _tS, string _tP, string _pP);
@@ -98,10 +113,17 @@ class Produit
     void  findMeilleurBornes();
     void  resetJour();
     void  resetDemandeJournaliere();
-    void retenirMeilleurVoisin();
+    void retenirMeilleurVoisin(vector<struct candidat> &candidats);
     void doPassage();
+    bool isTabou(struct candidat c);
+    void compareResultatGlobal(struct candidat &voisin);
+    void addListeTabou(struct candidat &voisin);
     void getMoinsPireCandidat(vector<struct stockAlerte_coutTotal> &sa_ct);
     vector<struct stockAlerte_coutTotal> getMeilleurCandidat();
+
+    vector<struct candidat> genererVoisins(struct candidat);
+    int randInt(int a, int b);
+    void setStockAlerteTheorique();
 };
 
 #endif 
