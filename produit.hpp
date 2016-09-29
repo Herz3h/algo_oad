@@ -6,6 +6,7 @@
 #include <vector>
 #include "csv.h"
 #include <cmath>
+#include <fstream>
 
 using namespace std;
 using namespace io;
@@ -29,7 +30,12 @@ using namespace io;
 #define NB_ESSAI_SANS_AMELIORATION_MAX 100
 #define BORNE_QUANTITE_VOISINS 0.4
 #define BORNE_STOCK_ALERT_VOISINS 0.4
-#define NB_VOISINS 100
+#define NB_VOISINS 1000
+#define TOLERANCE_RUPTURE 2.36
+#define FREQUENCE_EXPLORATION 10
+#define FREQUENCE_EXPLOITATION 5
+#define RATIO_EXPLORATION 0.2
+#define RATIO_EXPLOITATION 0.01
 
 struct coupleDemandeEffectif {
 	int demande;

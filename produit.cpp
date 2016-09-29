@@ -57,7 +57,11 @@ Produit::Produit(string _p, string _c, int _sD, int _dJ, int _cJ, int _mS, int _
         retenirMeilleurVoisin(voisins);
     }
 
-    cout << meilleurCandidatGlobal.quantite << " " << meilleurCandidatGlobal.stockAlerte << " " << meilleurCandidatGlobal.coutTotal << endl;
+    /* ofstream file; */
+    /* file.open("output.csv", ios::out | ios::app); */
+    /* file << produit << ";" << meilleurCandidatGlobal.quantite << ";" << meilleurCandidatGlobal.stockAlerte  << endl; */
+    /* file.close(); */
+
 }
 
 void Produit::setStockAlerteTheorique()
@@ -112,11 +116,10 @@ void Produit::setStockAlerteTheorique()
     ecartType = sqrt(variance); 	
 
     //Calcul du Stock de Securite	
-    stockSecurite = 2.36 * ecartType * sqrt(delaiLivraison);
+    stockSecurite = TOLERANCE_RUPTURE * ecartType * sqrt(delaiLivraison);
 
     //Calcul ROP = (Average Demand x Lead Time) + Safety Stock
     ROP = stockSecurite + (moyenne * delaiLivraison);
-    cout << "ROP " << ROP << endl;
 
     resetJour();
     resetDemandeJournaliere();
@@ -144,6 +147,20 @@ vector<struct candidat> Produit::genererVoisins(struct candidat candidat_depart)
 
         struct candidat voisin;
 
+        if((i % FREQUENCE_EXPLORATION) == 0)
+        {
+            minQ *= (1.0 - RATIO_EXPLORATION);
+            maxQ *= (1.0 + RATIO_EXPLORATION);
+            minSA *= (1.0 - RATIO_EXPLORATION);
+            maxSA *= (1.0 + RATIO_EXPLORATION);
+        }
+        else if((i % FREQUENCE_EXPLOITATION) == 0)
+        {
+            minQ *= (1.0 - RATIO_EXPLOITATION);
+            maxQ *= (1.0 + RATIO_EXPLOITATION);
+            minSA *= (1.0 - RATIO_EXPLOITATION);
+            maxSA *= (1.0 + RATIO_EXPLOITATION);
+        }
 
         voisin.quantite=  randInt(minQ,maxQ);
 
