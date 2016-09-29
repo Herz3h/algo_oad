@@ -162,7 +162,7 @@ vector<struct candidat> Produit::genererVoisins(struct candidat candidat_depart)
             maxSA *= (1.0 + RATIO_EXPLOITATION);
         }
 
-        cout << minQ << " " << maxQ << " " << minSA << " " << maxSA << endl;
+        /* cout << minQ << " " << maxQ << " " << minSA << " " << maxSA << endl; */
 
         voisin.quantite=  randInt(minQ,maxQ);
 
@@ -240,12 +240,14 @@ void Produit::compareResultatGlobal(struct candidat &voisin)
     }
     else
         nbEssaiSansAmelioration++;
+    cout << produit <<  " " <<  nbEssaiSansAmelioration << endl;
 }
 
-void Produit::doPassage()
+struct candidat Produit::getMeilleurCandidatGlobal()
 {
-
+    return meilleurCandidatGlobal;
 }
+
 
 void Produit::computeData()
 {

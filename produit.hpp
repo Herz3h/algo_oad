@@ -35,7 +35,7 @@ using namespace io;
 #define FREQUENCE_EXPLORATION 10
 #define FREQUENCE_EXPLOITATION 5
 #define RATIO_EXPLORATION 0.002
-#define RATIO_EXPLOITATION 0.0
+#define RATIO_EXPLOITATION 0.001
 
 struct coupleDemandeEffectif {
 	int demande;
@@ -130,6 +130,7 @@ class Produit
     vector<struct candidat> genererVoisins(struct candidat);
     int randInt(int a, int b);
     void setStockAlerteTheorique();
+    struct candidat getMeilleurCandidatGlobal();
 };
 
 #endif 

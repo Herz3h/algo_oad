@@ -32,8 +32,9 @@ void readCsv()
     // Récuperation des données par ligne (1produit/ligne)
     while(in.read_row(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, tauxSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, tauxPossession, prixAchat, pourcentagePerte)){
         Produit p(produit, categorie, stockDepart, demandeJournaliere, croissanceJournaliere, moisSaisonnalite, variationJournaliere, delaiLivraison, coutLancement, prixAchat, tauxSaisonnalite, tauxPossession, pourcentagePerte);
+        cout << i << endl;
         i++;
-        totalSimulation += p.getTotalAnnee();
+        totalSimulation += p.getMeilleurCandidatGlobal().coutTotal;
     }
     cout << totalSimulation << endl;
 
