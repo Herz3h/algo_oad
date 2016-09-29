@@ -19,7 +19,7 @@ void readCsv()
 
     int i = 1;
 
-    for(int j = 1;j < 10;j++)
+    for(int j = 1;j < 2;j++)
     {
         // Initialisation
         io::CSVReader<13, io::trim_chars<' '>, io::no_quote_escape<';'> > in("donneesventes.csv");
