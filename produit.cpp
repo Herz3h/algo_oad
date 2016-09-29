@@ -31,107 +31,19 @@ Produit::Produit(string _p, string _c, int _sD, int _dJ, int _cJ, int _mS, int _
     /* cout << getTotalAnnee() << endl; */
 
 
-    doPassage();
-    vector<struct stockAlerte_coutTotal> sa_ct = getMeilleurCandidat();
-    getMoinsPireCandidat(sa_ct);
-
-    cout << bestStockAlertePassage << endl;
 
 }
 
+
+void Produit::retenirMeilleurVoisin()
+{
+
+
+}
 
 void Produit::doPassage()
 {
-    for(int i = 0;i < NB_PASSAGE;i++)
-    {
 
-        bestStockAlertePassage = 0;
-        bestTotalAnneePassage = 0;
-
-        findBestSockAlerte();
-
-        int bestBorne = 0;
-        if(bestCoutTotalBorneMin < bestCoutTotalBorneMax)
-            bestBorne = borneMin;
-        else
-            bestBorne = borneMax;
-
-        struct stockAlerte_coutTotal sa_ct = {bestBorne, min(bestCoutTotalBorneMin, bestCoutTotalBorneMax)};
-        top_stockAlert_coutTotal.push_back(sa_ct);
-    }
-}
-
-vector<struct stockAlerte_coutTotal> Produit::getMeilleurCandidat()
-{
-
-    // Classement croissant selon le coutTotal
-    sort(top_stockAlert_coutTotal.begin(), top_stockAlert_coutTotal.end(), 
-            [](const struct stockAlerte_coutTotal &A, const struct stockAlerte_coutTotal &B) -> bool {
-            return A.coutTotal > B.coutTotal;
-    });
-
-    vector<struct stockAlerte_coutTotal> sa_ct;
-    for(int i=0;i < NB_TOP_CANIDATS;i++)
-    {
-        sa_ct.push_back(top_stockAlert_coutTotal[i]);
-    }
-
-    return sa_ct;
-}
-
-void Produit::getMoinsPireCandidat(vector<struct stockAlerte_coutTotal> &meilleurCandidats)
-{
-    vector< vector<struct stockAlerte_coutTotal> > resultatsPassagesCandidat(NB_TOP_CANIDATS);
-
-    for(int i=0;i < NB_TOP_CANIDATS;i++)
-    {
-        stockAlerte = meilleurCandidats[i].stockAlerte;
-        for(int j=0;j < NB_PASSAGE;j++)
-        {
-            computeData();
-
-        }
-    }
-}
-
-void Produit::findBestSockAlerte()
-{
-    for(int j = 0;j < NB_PAS;j++)
-    {
-        bestCoutTotalBorneMin = 0;
-        bestCoutTotalBorneMax = 0;
-
-        for(int i = borneMin; i < borneMax; i += pas[j])
-        {
-            resetJour();
-            resetDemandeJournaliere();
-            stockAlerte = i;
-            computeData();
-            int totalAnnee = getTotalAnnee();
-
-
-        }
-
-        borneMin = bestMinStockAlerte;
-        borneMax = bestMaxStockAlerte;
-    }
-    /* cout << "BestMinStockAlerte : " << bestMinStockAlerte << " bestMaxStockAlerte" << bestMaxStockAlerte << endl; */
-
-}
-
-void Produit::get()
-{
-    int totalAnnee = getTotalAnnee();
-    if(totalAnnee < bestCoutTotalBorneMin || bestCoutTotalBorneMin == 0)
-    {
-        bestMinStockAlerte = i;
-        bestCoutTotalBorneMin = totalAnnee;
-    }
-    else if(totalAnnee < bestCoutTotalBorneMax || bestCoutTotalBorneMax == 0)
-    {
-        bestMaxStockAlerte = i;
-        bestCoutTotalBorneMax = totalAnnee;
-    }
 }
 
 void Produit::computeData()

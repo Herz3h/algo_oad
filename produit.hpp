@@ -5,6 +5,7 @@
 #include <map>
 #include <vector>
 #include "csv.h"
+#include <cmath>
 
 using namespace std;
 using namespace io;
@@ -24,6 +25,12 @@ using namespace io;
 #define NB_PAS 4
 #define NB_PASSAGE 100
 #define NB_TOP_CANIDATS 5
+
+struct candidat {
+    int quantite;
+    int stockAlerte;
+    float coutTotal;
+};
 
 struct mois {
     int premierJour;
@@ -88,9 +95,10 @@ class Produit
     int   getStockFictifJournalier();
     void  setDemandeJournaliereActuelle();
     float getTotalAnnee();
-    void  findBestSockAlerte();
+    void  findMeilleurBornes();
     void  resetJour();
     void  resetDemandeJournaliere();
+    void retenirMeilleurVoisin();
     void doPassage();
     void getMoinsPireCandidat(vector<struct stockAlerte_coutTotal> &sa_ct);
     vector<struct stockAlerte_coutTotal> getMeilleurCandidat();
